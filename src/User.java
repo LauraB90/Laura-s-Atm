@@ -27,6 +27,7 @@ public class User {
             System.exit(1);
         }
 //
+        //
         //get a new unique id
         this.uuid = theBank.getNewUserUUID();
         // create an empty list of acc
