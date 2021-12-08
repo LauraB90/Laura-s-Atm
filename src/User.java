@@ -57,4 +57,24 @@ public class User {
         return false;
     }
 
+    public String getFirstName(){
+        return this.fistName;
+    }
+
+    public void printAccountSummary(){
+        System.out.printf("\n\n%s's accounts summary", this.pinHash);
+        for(int a = 0; a < accounts.size(); a++){
+            System.out.printf("%d) %s\n", a+1,
+                    this.accounts.get(a).getSummaryLine());
+        }
+        System.out.println();
+    }
+
+    public int numAccounts(){
+        return this.accounts.size();
+    }
+
+    public void printAccTransHistory(int accIdx){
+        this.accounts.get(accIdx).printTransHistory();
+    }
 }

@@ -6,7 +6,8 @@ public class Bank {
     private String name;
     private ArrayList<User> users;
     private ArrayList<Account> accounts;
-
+        //create a new bank object w/empty list of users and acc
+        //name the name of the bank
     public Bank (String name){
         this.name = name;
         this.users = new ArrayList<User>();
