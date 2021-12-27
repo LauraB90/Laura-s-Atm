@@ -45,5 +45,6 @@ public String getSummaryLine(){
                     this.timeStamp.toString(), this.amount, this.memo);
 
         }
+
 }
 }

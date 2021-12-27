@@ -131,7 +131,119 @@ public class ATM {
                 System.out.println("invalid Account. Please try again.");
             }
         }while (fromAcct < 0 || fromAcct >= theUser.numAccounts());
-            accBal = theUser.getBalance(fromAcct);
+         accBal = theUser.getAccBalance(fromAcct);
+
+        //get the acc to transfer
+        do {
+            System.out.printf("Enter the number (1 - %d) of the accpunt\n" +
+                    "to transfer to : ");
+            toAcct = sc.nextInt()-1;
+            if (toAcct < 0 || toAcct >= theUser.numAccounts()){
+                System.out.println("invalid Account. Please try again.");
+            }
+        }while (toAcct < 0 || toAcct >= theUser.numAccounts());
+
+
+        // get the amount to transfer
+      do {
+          System.out.printf("Enter the amount to trasnfer (max $%.0f): $",
+                                     accBal);
+          amount = sc.nextDouble();
+            if (amount < 0){
+                System.out.println("Amount must be greater than zero");
+            } else if (amount > accBal){
+                System.out.printf("Amount must be greater than\n" +
+                        "balance of $%.02f.\n", accBal);
+            }
+      } while(amount < 0 || amount > accBal);
+
+  // do the transfer
+       theUser.addAccTransaction(fromAcct, -1*amount, String.format(
+               "Transfer to account %s", theUser.getAccUUID(toAcct)));
+        theUser.addAccTransaction(toAcct, -1*amount, String.format(
+                "Transfer to account %s", theUser.getAccUUID(toAcct)));
+    }
+
+    public static void withdrawalFunds(User theUser, Scanner sc){
+
+        int fromAcct;
+        double amount;
+        double accBal;
+        String memo;
+
+        // get acc transfer from
+        do {
+            System.out.printf("Enter the number (1 - %d) of the accpunt\n" +
+                    "to transfer from : ");
+            fromAcct = sc.nextInt()-1;
+            if (fromAcct < 0 || fromAcct >= theUser.numAccounts()){
+                System.out.println("invalid Account. Please try again.");
+            }
+        }while (fromAcct < 0 || fromAcct >= theUser.numAccounts());
+        accBal = theUser.getAccBalance(fromAcct);
+
+
+        do {
+            System.out.printf("Enter the amount to trasnfer (max $%.0f): $",
+                    accBal);
+            amount = sc.nextDouble();
+            if (amount < 0){
+                System.out.println("Amount must be greater than zero");
+            } else if (amount > accBal){
+                System.out.printf("Amount must be greater than\n" +
+                        "balance of $%.02f.\n", accBal);
+            }
+        } while(amount < 0 || amount > accBal);
+
+        // gobble up the rest of previos input
+        sc.nextLine();
+
+        System.out.println("Enter a memo: ");
+        memo = sc.nextLine();
+
+        // the withdrawl
+        theUser.addAccTransaction(fromAcct, -1*amount, memo);
+    }
+    public static void depositFunds(User theUser, Scanner sc){
+
+        int fromAcct;
+        double amount;
+        double accBal;
+        String memo;
+
+        // get acc transfer from
+        do {
+            System.out.printf("Enter the number (1 - %d) of the accpunt\n" +
+                    "to transfer from : ");
+            fromAcct = sc.nextInt()-1;
+            if (fromAcct < 0 || fromAcct >= theUser.numAccounts()){
+                System.out.println("invalid Account. Please try again.");
+            }
+        }while (fromAcct < 0 || fromAcct >= theUser.numAccounts());
+        accBal = theUser.getAccBalance(fromAcct);
+
+
+        do {
+            System.out.printf("Enter the amount to trasnfer (max $%.0f): $",
+                    accBal);
+            amount = sc.nextDouble();
+            if (amount < 0){
+                System.out.println("Amount must be greater than zero");
+            } else if (amount > accBal){
+                System.out.printf("Amount must be greater than\n" +
+                        "balance of $%.02f.\n", accBal);
+            }
+        } while(amount < 0 || amount > accBal);
+
+        // gobble up the rest of previos input
+        sc.nextLine();
+
+        System.out.println("Enter a memo: ");
+        memo = sc.nextLine();
+
+        // the withdrawl
+        theUser.addAccTransaction(fromAcct, -1*amount, memo);
+
     }
 
 }
