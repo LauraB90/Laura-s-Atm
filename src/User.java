@@ -65,7 +65,7 @@ public class User {
 
     //print the accs summary 1:10
     public void printAccountSummary(){
-        System.out.printf("\n\n%s's accounts summary", this.pinHash);
+        System.out.printf("\n\n%s's accounts summary\n", this.pinHash);
         for(int a = 0; a < accounts.size(); a++){
             System.out.printf("%d) %s\n", a+1,
                     this.accounts.get(a).getSummaryLine());

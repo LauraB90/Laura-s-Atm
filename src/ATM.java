@@ -55,7 +55,7 @@ public class ATM {
 
     public static void printUserMenu(User theUser, Scanner sc){
 
-        theUser.  ();
+        theUser.printAccountSummary();
 
         int choice;
 
@@ -206,7 +206,7 @@ public class ATM {
     }
     public static void depositFunds(User theUser, Scanner sc){
 
-        int fromAcct;
+        int toAcc;
         double amount;
         double accBal;
         String memo;
@@ -215,12 +215,12 @@ public class ATM {
         do {
             System.out.printf("Enter the number (1 - %d) of the accpunt\n" +
                     "to transfer from : ");
-            fromAcct = sc.nextInt()-1;
-            if (fromAcct < 0 || fromAcct >= theUser.numAccounts()){
+            toAcc = sc.nextInt()-1;
+            if (toAcc < 0 || toAcc >= theUser.numAccounts()){
                 System.out.println("invalid Account. Please try again.");
             }
-        }while (fromAcct < 0 || fromAcct >= theUser.numAccounts());
-        accBal = theUser.getAccBalance(fromAcct);
+        }while (toAcc < 0 || toAcc >= theUser.numAccounts());
+        accBal = theUser.getAccBalance(toAcc);
 
 
         do {
@@ -242,7 +242,7 @@ public class ATM {
         memo = sc.nextLine();
 
         // the withdrawl
-        theUser.addAccTransaction(fromAcct, -1*amount, memo);
+        theUser.addAccTransaction(toAcc, amount, memo);
 
     }
 
