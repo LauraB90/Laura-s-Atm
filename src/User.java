@@ -80,4 +80,9 @@ public class User {
     public void printAccTransHistory(int accIdx){
         this.accounts.get(accIdx).printTransHistory();
     }
+
+    public double getAccBalance(int accIdx){
+        return this.accounts.get(accIdx).getBalance();
+    }
 }
+

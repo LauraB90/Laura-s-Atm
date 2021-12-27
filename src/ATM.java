@@ -1,5 +1,6 @@
 package src;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class ATM {
@@ -116,6 +117,21 @@ public class ATM {
     }
     public static void transferFunds(User theUser, Scanner sc){
 
+        int fromAcct;
+        int toAcct;
+        double amount;
+        double accBal;
+
+    // get acc transfer from
+        do {
+            System.out.printf("Enter the number (1 - %d) of the accpunt\n" +
+                    "to transfer from : ");
+            fromAcct = sc.nextInt()-1;
+            if (fromAcct < 0 || fromAcct >= theUser.numAccounts()){
+                System.out.println("invalid Account. Please try again.");
+            }
+        }while (fromAcct < 0 || fromAcct >= theUser.numAccounts());
+            accBal = theUser.getBalance(fromAcct);
     }
 
 }
