@@ -1,3 +1,5 @@
+package src;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -61,6 +63,7 @@ public class User {
         return this.fistName;
     }
 
+    //print the accs summary 1:10
     public void printAccountSummary(){
         System.out.printf("\n\n%s's accounts summary", this.pinHash);
         for(int a = 0; a < accounts.size(); a++){

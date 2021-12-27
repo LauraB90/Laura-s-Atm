@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Scanner;
 
 public class ATM {
@@ -52,7 +54,7 @@ public class ATM {
 
     public static void printUserMenu(User theUser, Scanner sc){
 
-        theUser.printAccountSummary();
+        theUser.  ();
 
         int choice;
 
@@ -110,5 +112,10 @@ public class ATM {
         } while(theAcct < 0 || theAcct >= theUser.numAccounts());
 
         theUser.printAccTransHistory(theAcct);
+
     }
+    public static void transferFunds(User theUser, Scanner sc){
+
+    }
+
 }
