@@ -20,7 +20,7 @@ public class Bank {
         String uuid;
         Random rng = new Random();
         int len = 6;
-        boolean nonUnique = false;
+        boolean nonUnique;
         //continue looping untill we get a unique one|.
         do {
             uuid = "";
@@ -58,7 +58,7 @@ public class Bank {
         do {
             uuid = "";
             for (int c = 0; c < len; c++) {
-                uuid += ((Integer) rng.nextInt(10)).toString();
+                uuid += ((Integer) rng.nextInt(10)).toString(); // adding a digit in string form (0-9)
             }
             //iterates thru all the user objects to cjeck if its unique.
             nonUnique = false;

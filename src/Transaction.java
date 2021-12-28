@@ -42,7 +42,7 @@ public String getSummaryLine(){
 
         } else {
             return String.format("%s : $(%.02f) : %s",
-                    this.timeStamp.toString(), this.amount, this.memo);
+                    this.timeStamp.toString(), -this.amount, this.memo);
 
         }
 
