@@ -9,7 +9,7 @@ public class ATM {
 
         Scanner sc = new Scanner(System.in);
 
-        Bank theBank = new Bank("Yoongi's Bank");
+        Bank theBank = new Bank("Bangtan's Bank");
 
                     //add a user (includes savings acc)
         User aUser = theBank.addUser("Namjoon", "Kim", "1234");
@@ -26,7 +26,7 @@ public class ATM {
                 curUser = ATM.mainMenuPrompt(theBank, sc);
 
                 //stay in main menu until user quits
-                ATM.printUserMenu(curUser, sc);
+                ATM.mainMenu(curUser, sc);
             }
     }
 
@@ -53,14 +53,14 @@ public class ATM {
         return authUser;
     }
 
-    public static void printUserMenu(User theUser, Scanner sc){
+    public static void mainMenu(User elUser, Scanner sc){
 
-        theUser.printAccountSummary();
+        elUser.printAccountSummary();
 
         int choice;
 
         do{
-            System.out.printf("Welcome %s, what would you like to do?\n", theUser.getFirstName());
+            System.out.printf("Welcome %s, what would you like to do?\n", elUser.getFirstName());
 
             System.out.println("  1) Show account transaction");
             System.out.println("  2) Withdrawal");
@@ -79,16 +79,16 @@ public class ATM {
         switch (choice){
 
             case 1:
-                ATM.showTransHistory(theUser, sc);
+                ATM.transHistory(elUser, sc);
                 break;
             case 2:
-                ATM.withdrawalFunds(theUser, sc);
+                ATM.withdrawals(elUser, sc);
                 break;
             case 3:
-                ATM.depositFunds(theUser, sc);
+                ATM.deposits(elUser, sc);
                 break;
             case 4:
-                ATM.transferFunds(theUser, sc);
+                ATM.transfers(elUser, sc);
                 break;
             case 5:
                 // gobble up the rest of previos input
@@ -97,13 +97,13 @@ public class ATM {
         }
 
         if (choice != 5){
-            ATM.printUserMenu(theUser, sc);
+            ATM.mainMenu(elUser, sc);
         }
     }
 
 // show the transaction history for an acc
 
-    public static void showTransHistory(User theUser, Scanner sc){
+    public static void transHistory(User theUser, Scanner sc){
         int theAcct;
 
         do {
@@ -119,7 +119,7 @@ public class ATM {
         theUser.printAccTransHistory(theAcct);
 
     }
-    public static void transferFunds(User theUser, Scanner sc){
+    public static void transfers(User theUser, Scanner sc){
 
         int fromAcct;
         int toAcct;
@@ -168,7 +168,7 @@ public class ATM {
                 "Transfer to account %s", theUser.getAccUUID(toAcct)));
     }
 
-    public static void withdrawalFunds(User theUser, Scanner sc){
+    public static void withdrawals(User theUser, Scanner sc){
 
         int fromAcct;
         double amount;
@@ -208,7 +208,7 @@ public class ATM {
         // the withdrawl
         theUser.addAccTransaction(fromAcct, -1*amount, memo);
     }
-    public static void depositFunds(User theUser, Scanner sc){
+    public static void deposits(User theUser, Scanner sc){
 
         int toAcc;
         double amount;
@@ -228,7 +228,9 @@ public class ATM {
 
 
         do {
-            System.out.printf("Enter the amount to transfer (max $%.0f): $",
+            //System.out.println("Enter the amount to deposit");
+
+            System.out.printf("Enter the amount to deposit (max $%.0f): $",
                     accBal);
             amount = sc.nextDouble();
             if (amount < 0){
